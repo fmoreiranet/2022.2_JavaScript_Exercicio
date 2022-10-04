@@ -42,27 +42,18 @@
 </body>
 
 <script>
-    function controllerCalculo() {
+    function calculoQuantidadeLampadas() {
         // Entrada
         var potencia = document.getElementById("potencia").value;
         var largura = document.getElementById("largura").value;
         var comprimento = document.getElementById("comprimento").value;
-
-        var resp = calculoQuantidadeLampadas(potencia, largura, comprimento);
-
-        saidaDados("Quantidade de lâmpadas: " + resp);
-    }
-
-    function calculoQuantidadeLampadas(potencia, largura, comprimento) {
         //Processamento
         var dimensao = largura * comprimento;
         var quantLampadas = (dimensao * 18) / potencia;
         return quantLampadas;
-    }
-
-    function saidaDados(texto) {
         //Saida
-        document.getElementById("saidaTexto").innerHTML = texto;
+        document.getElementById("saidaTexto").innerHTML = "Quantidade de lâmpadas: " + quantLampadas;
+
     }
 
 </script>

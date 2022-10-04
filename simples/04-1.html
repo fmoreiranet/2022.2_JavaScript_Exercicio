@@ -34,7 +34,7 @@
         </div>
 
         <div class="form-groups">
-            <button class="btn btn-primary" onclick="calculoQuantidadeLampadas()"> Calcular </button>
+            <button class="btn btn-primary" onclick="controllerCalculo()"> Calcular </button>
         </div>
     </section>
 
@@ -42,16 +42,27 @@
 </body>
 
 <script>
-    function calculoQuantidadeLampadas() {
+    function controllerCalculo() {
         // Entrada
         var potencia = document.getElementById("potencia").value;
         var largura = document.getElementById("largura").value;
         var comprimento = document.getElementById("comprimento").value;
+
+        var x = calculoQuantidadeLampadas(potencia, largura, comprimento);
+
+        saidaDados("Quantidade de lâmpadas:" + x);
+    }
+
+    function calculoQuantidadeLampadas(potencia, largura, comprimento) {
         //Processamento
         var dimensao = largura * comprimento;
         var quantLampadas = (dimensao * 18) / potencia;
+        return quantLampadas;
+    }
+
+    function saidaDados(texto) {
         //Saida
-        document.getElementById("saidaTexto").innerHTML = "Resposta: " + quantLampadas;
+        document.getElementById("saidaTexto").innerHTML = texto;
     }
 
 </script>
