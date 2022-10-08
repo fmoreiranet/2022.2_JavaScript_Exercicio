@@ -62,9 +62,10 @@
         var abastecimento = parseInt(document.getElementById("abastecimento").value);
         var consumo = parseFloat(document.getElementById("consumo").value);
 
-        var resposta_calculo = calculoAbastecimento(comprimento, numero_volta, abastecimento, consumo);
-
-        saidaDados("Quantidade de litros minima: " + resposta_calculo.toFixed(2));
+        if (validadados(comprimento, numero_volta, abastecimento, consumo)) {
+            var resposta_calculo = calculoAbastecimento(comprimento, numero_volta, abastecimento, consumo);
+            saidaDados("Quantidade de litros minima: " + resposta_calculo.toFixed(2));
+        }
     }
 
     function calculoAbastecimento(comprimento = 0, numero_volta = 0, abastecimento = 0, consumo = 0) {
@@ -78,6 +79,27 @@
         document.getElementById("saidaTexto").innerHTML = texto_saida;
     }
 
+    function validadados(comprimento, numero_volta, abastecimento, consumo) {
+        var error = "";
+        if (comprimento <= 0) {
+            error += "Erro no valor comprimento!\n";
+        }
+        if (numero_volta <= 0) {
+            error += "Erro no valor numero_volta!\n";
+        }
+        if (abastecimento <= 0) {
+            error += "Erro no valor abastecimento!\n";
+        }
+        if (consumo <= 0) {
+            error += "Erro no valor consumo!\n";
+        }
+        if (error == "") {
+            return true;
+        } else {
+            alert("Erros: " + error);
+            return false
+        }
+    }
 </script>
 
 </html>
