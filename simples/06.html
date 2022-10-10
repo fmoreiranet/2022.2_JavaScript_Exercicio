@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+</head>
+
+<body>
+    <section class="container">
+        <p>
+            6) Um motorista de táxi deseja calcular o rendimento de seu carro na praça. Sabendo-se que o preço do
+            combustível é de R$ 4,87, escreva um programa para ler: a marcação do odômetro (Km) no início do
+            dia, a marcação (Km) no final do dia, o número de litros de combustível gasto e o valor total (R$)
+            recebido dos passageiros. Calcular e escrever: a média do consumo em Km/L e o lucro (líquido) do dia.
+        </p>
+
+        <form>
+            <div class="form-groups">
+                <label for="odometro_inicio">Odômetro inicial?</label>
+                <input type="number" name="odometro_inicio" id="odometro_inicio" value="0" class="form-control">
+            </div>
+
+            <div class="form-groups">
+                <label for="odometro_final">Odômetro final?</label>
+                <input type="number" name="odometro_final" id="odometro_final" value="0" class="form-control">
+            </div>
+
+            <div class="form-groups">
+                <label for="combustivel">Combustível gasto?</label>
+                <input type="number" name="combustivel" id="combustivel" value="0" class="form-control">
+            </div>
+
+            <div class="form-groups">
+                <label for="valor_dia">Valor recebido no final do dia?</label>
+                <input type="number" name="valor_dia" id="valor_dia" value="0" class="form-control">
+            </div>
+            <div class="form-groups">
+                <button type="button" class="btn btn-danger" onclick="controllerValores()">Calcular</button>
+            </div>
+
+        </form>
+
+        <span id="saidaTexto"></span>
+
+    </section>
+</body>
+
+<script>
+    var nome = "";
+    var matricula = 0;
+    var noturno = false;
+
+    function controllerValores() {
+        let odometro_inicio = parseFloat(document.getElementById("odometro_inicio").value);
+        let odometro_final = parseFloat(document.getElementById("odometro_final").value);
+        let combustivel = parseFloat(document.getElementById("combustivel").value);
+        let valor_dia = parseFloat(document.getElementById("valor_dia").value);
+
+        let kilometragem = calculoDistancia(odometro_inicio, odometro_final);
+        let media = calculoMediaConsumo(kilometragem, combustivel);
+        let lucro = calculoLucro(combustivel, valor_dia);
+
+        saidaDados("<b>Media: " + media + "</b> - Lucro: R$" + lucro);
+    }
+
+    function calculoDistancia(odo_inicio = 0, odo_final = 0) {
+        let km = odo_final - odo_inicio;
+        return km
+    }
+
+    function calculoMediaConsumo(km = 0, l = 0) {
+        return km / l;
+    }
+
+    function calculoLucro(litros_dia = 0, valor_dia = 0, valor_combustivel = 4.87) {
+        return valor_dia - (litros_dia * valor_combustivel)
+    }
+
+    function saidaDados(texto = "") {
+        document.getElementById("saidaTexto").innerHTML = texto;
+    }
+</script>
+
+</html>
