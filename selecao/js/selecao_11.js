@@ -11,10 +11,11 @@ function controllerAcesso() {
     else {
         saidaTexto("Senha invalida!");
     }
+
 }
 
 function validaAcesso(senha = "") {
-    var global_senhaValida = "²¹ //vem do banco de dados
+    var global_senhaValida = "1234"; //vem do banco de dados
     if (senha == global_senhaValida) {
         return true;//"ACESSO PERMITIDO";
     } else {
