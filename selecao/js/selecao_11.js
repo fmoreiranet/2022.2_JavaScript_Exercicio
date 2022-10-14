@@ -1,19 +1,24 @@
 
-var global_senhaValida = "1234";
 
 function controllerAcesso() {
     var senha = document.getElementById("senha").value;
 
     var restornoValidacao = validaAcesso(senha);
 
-    saidaTexto(restornoValidacao);
+    if (restornoValidacao) {
+        window.location.href = "http://google.com.br";
+    }
+    else {
+        saidaTexto("Senha invalida!");
+    }
 }
 
 function validaAcesso(senha = "") {
+    var global_senhaValida = "²¹ //vem do banco de dados
     if (senha == global_senhaValida) {
-        return "ACESSO PERMITIDO";
+        return true;//"ACESSO PERMITIDO";
     } else {
-        return "ACESSO NEGADO";
+        return false; //"ACESSO NEGADO";
     }
 }
 
