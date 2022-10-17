@@ -2,7 +2,7 @@
 (function () {
     var palavra = sorteioPalavra();
     var letras = contarLetraPalavra(palavra);
-    montarletrasTela(letras);
+    montarLetrasTela(letras);
 })();
 
 function sorteioPalavra() {
@@ -18,7 +18,7 @@ function contarLetraPalavra(palavra = "") {
 
 // ----------------------------------------------
 
-function montarletrasTela(quantLetras = 0) {
+function montarLetrasTela(quantLetras = 0) {
     var letras = "";
     for (var i = 1; i <= quantLetras; i++) {
         letras += "<div> _ <div>";
