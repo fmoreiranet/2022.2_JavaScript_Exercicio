@@ -6,9 +6,14 @@ function controllerGols() {
 
     var error = validaEntrada(golsGremio, golsInter);
     if (error != "") {
-        alert(error);
+        //alert(error);
+        saidaDados("Erros: " + error)
         return;
     }
+
+    var resultdado = verfPlacar(golsGremio, golsInter);
+
+    saidaDados("Resultado do jogo: " + resultdado);
 
 }
 
@@ -23,4 +28,18 @@ function validaEntrada(golsGremio, golsInter) {
     }
 
     return error;
+}
+
+function verfPlacar(golsGremio = 0, golsInter = 0) {
+    if (golsGremio > golsInter) {
+        return "Gremio";
+    } else if (golsInter > golsGremio) {
+        return "Inter";
+    } else {
+        return "EMPATE";
+    }
+}
+
+function saidaDados(texto) {
+    document.getElementById("saidaTexto").innerHTML = texto;
 }

@@ -10,16 +10,16 @@
 </head>
 
 <body>
-    <main>
+    <main class="container">
         <h1>Jogo da Forca</h1>
         <section id="imagem_forca">
             <img src="" alt="">
         </section>
-        <section id="palavra_sorteada">
+        <section id="palavra_sorteada" class="d-flex justify-content-between">
             _ _ _ _ _
         </section>
         <section>
-            <input type="text" maxlength="1" id="letras_selecionada">
+            <input type="text" maxlength="1" id="letras_selecionada" onkeyup="entrarLetra(this)">
         </section>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
