@@ -45,21 +45,59 @@ var valor2 = 0;
 })();
 
 function adicao() {
-    let resultado = valor1 + valor2
+    let resultado = valor1 + valor2;
+    montarObjeto(valor1, valor2, 1, resultado);
     saidaDados("Resultado2: " + resultado);
 }
 
 function subtracao() {
-    let resultado = valor1 - valor2
+    let resultado = valor1 - valor2;
+    montarObjeto(valor1, valor2, 2, resultado)
     saidaDados("Resultado2: " + resultado);
 }
 
 function divisao() {
-    let resultado = valor1 / valor2
+    let resultado = valor1 / valor2;
+    montarObjeto(valor1, valor2, 3, resultado)
     saidaDados("Resultado2: " + resultado);
 }
 
 function multiplicao() {
     let resultado = valor1 * valor2
+    montarObjeto(valor1, valor2, 4, resultado)
     saidaDados("Resultado2: " + resultado);
+}
+
+//--------------------------
+function montarObjeto(numero1, numero2, opc, result) {
+    let obj = {
+        valor1: numero1,
+        valor2: numero2,
+        operacao: opc,
+        resultado: result
+    }
+    salvarDados(obj);
+    recuperarDados();
+    return obj
+}
+
+function salvarDados(obj) {
+    let storage = JSON.parse(localStorage.getItem("calculo"))
+    if (storage == null) {
+        storage = []
+    }
+    storage.push(obj);
+
+    localStorage.setItem("calculo", JSON.stringify(storage));
+}
+
+function recuperarDados() {
+    let storage = JSON.parse(localStorage.getItem("calculo"));
+    if (storage != null) {
+        let texto = "";
+        for (var i = 0; i < storage.length; i++) {
+            texto += storage[i].valor1 + " - " + storage[i].valor2 + " - " + storage[i].operacao + " - " + storage[i].resultado + "<br>";
+        }
+        document.getElementById("dados_banco").innerHTML = texto;
+    }
 }
