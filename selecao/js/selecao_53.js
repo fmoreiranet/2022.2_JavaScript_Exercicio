@@ -7,8 +7,10 @@ var aluno = {
     resultado: 0
 }
 
-// !(function () {
-// })()
+!(function () {
+    let alunos = listDadosAluno();
+    montarTabela(alunos);
+})()
 
 function controllerNotas() {
     aluno.nota1 = parseFloat(document.getElementById("nota-1").value);
@@ -17,8 +19,12 @@ function controllerNotas() {
     aluno.nota4 = parseFloat(document.getElementById("nota-4").value);
     aluno.media = calculoMedia(aluno.nota1, aluno.nota2, aluno.nota3, aluno.nota4);
     aluno.resultado = verificarSituacaoAluno(aluno.media);
+
     mostrarResultado(aluno.resultado, aluno.media);
+
     addDadosAluno(aluno);
+    let alunos = listDadosAluno();
+    montarTabela(alunos);
 }
 
 function calculoMedia(avaliacao1 = 0, avaliacao2 = 0, avaliacao3 = 0, avaliacao4 = 0) {
@@ -41,7 +47,49 @@ function mostrarResultado(resultado = false, media = 0) {
 }
 
 function addDadosAluno(obj = {}) {
-    let jsonObj = JSON.stringify(obj);
+    let dadosBanco = JSON.parse(localStorage.getItem("alunos"));
+    if (!dadosBanco) {
+        dadosBanco = [];
+    }
+    dadosBanco.push(obj);
+
+    let jsonObj = JSON.stringify(dadosBanco);
+
     localStorage.setItem("alunos", jsonObj);
 }
 
+function listDadosAluno() {
+    let dadosBanco = JSON.parse(localStorage.getItem("alunos"));
+    if (!dadosBanco) {
+        dadosBanco = [];
+    }
+    return dadosBanco;
+}
+
+function montarTabela(listDados = []) {
+    let tabela = "<table class='table'>";
+
+    tabela += "<tr>";
+    tabela += "<th>Nota 1</th>";
+    tabela += "<th>Nota 2</th>";
+    tabela += "<th>Nota 3</th>";
+    tabela += "<th>Nota 4</th>";
+    tabela += "<th>Resultado</th>";
+    tabela += "<th>Média</th>";
+    tabela += "</tr>";
+
+    for (var i = 0; i < listDados.length; i++) {
+        tabela += "<tr>";
+        tabela += "<td>" + listDados[i].nota1 + "</td>";
+        tabela += "<td>" + listDados[i].nota2 + "</td>";
+        tabela += "<td>" + listDados[i].nota3 + "</td>";
+        tabela += "<td>" + listDados[i].nota4 + "</td>";
+        tabela += "<td>" + listDados[i].resultado + "</td>";
+        tabela += "<td>" + listDados[i].media + "</td>";
+        tabela += "</tr>";
+    }
+
+    tabela += "</table>";
+
+    document.querySelector("#saidaTabela").innerHTML = tabela;
+}
