@@ -1,4 +1,6 @@
 var aluno = {
+    nome: "",
+    matricula: "",
     nota1: 0,
     nota2: 0,
     nota3: 0,
@@ -13,6 +15,8 @@ var aluno = {
 })()
 
 function controllerNotas() {
+    aluno.nome = document.getElementById("nome").value;
+    aluno.matricula = document.getElementById("matricula").value;
     aluno.nota1 = parseFloat(document.getElementById("nota-1").value);
     aluno.nota2 = parseFloat(document.getElementById("nota-2").value);
     aluno.nota3 = parseFloat(document.getElementById("nota-3").value);
@@ -70,6 +74,8 @@ function montarTabela(listDados = []) {
     let tabela = "<table class='table'>";
 
     tabela += "<tr>";
+    tabela += "<th>Nome</th>";
+    tabela += "<th>Matricula</th>";
     tabela += "<th>Nota 1</th>";
     tabela += "<th>Nota 2</th>";
     tabela += "<th>Nota 3</th>";
@@ -78,8 +84,10 @@ function montarTabela(listDados = []) {
     tabela += "<th>Média</th>";
     tabela += "</tr>";
 
-    for (var i = 0; i < listDados.length; i++) {
+    for (var i = 0; i < listDados.length; i++) {//i = i + 1
         tabela += "<tr>";
+        tabela += "<td>" + listDados[i].nome + "</td>";
+        tabela += "<td>" + listDados[i].matricula + "</td>";
         tabela += "<td>" + listDados[i].nota1 + "</td>";
         tabela += "<td>" + listDados[i].nota2 + "</td>";
         tabela += "<td>" + listDados[i].nota3 + "</td>";
