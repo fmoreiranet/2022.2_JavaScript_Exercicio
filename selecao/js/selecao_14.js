@@ -21,10 +21,12 @@ function validaEntrada(golsGremio, golsInter) {
     var error = "";
     if (!golsGremio || typeof golsGremio != 'number') {
         error += "Verifique a quantidade de gols do Grêmio!\n";
+        //error = error + "Verifique a quantidade de gols do Grêmio!\n"
     }
 
     if (!golsInter || typeof golsInter != 'number') {
         error += "Verifique a quantidade de gols do Inter!\n";
+        //error = error + "Verifique a quantidade de gols do Inter!\n";
     }
 
     return error;
