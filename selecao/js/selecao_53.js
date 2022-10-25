@@ -27,6 +27,7 @@ function controllerNotas() {
     mostrarResultado(aluno.resultado, aluno.media);
 
     addDadosAluno(aluno);
+    limparForm(0);
     let alunos = listDadosAluno();
     montarTabela(alunos);
 }
@@ -100,4 +101,16 @@ function montarTabela(listDados = []) {
     tabela += "</table>";
 
     document.querySelector("#saidaTabela").innerHTML = tabela;
+}
+
+function limparForm(index) {
+    //Pegando e limpando o formulário
+    //let form = document.getElementById("formCadastro");
+    let form = document.getElementsByTagName("form");
+    console.log(form);
+    form[index].reset();
+
+    //Clicando via código no botão
+    // let btnlimpar = document.getElementById("btnlimpar");
+    // btnlimpar.click();
 }
