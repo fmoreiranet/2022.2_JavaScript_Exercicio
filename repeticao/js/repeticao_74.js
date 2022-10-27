@@ -42,7 +42,6 @@ function controllerNumeros() {
     //         console.log(event);
     //     })
     // }
-
 }
 
 function saidaResultado(texto) {
