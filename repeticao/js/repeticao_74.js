@@ -35,7 +35,7 @@ function controllerNumeros() {
         })
     })
 
-    let p = document.querySelectorAll("p");
+    //let p = document.querySelectorAll("p");
     // for (var index = 0; index < p.length; index++) {
     //     p.addEventListener("click", function (event) {
     //         console.log(event);
@@ -76,7 +76,7 @@ function verifRepetidos(listNumeros = []) {
             }
         }
     }
-    return listRepetidos
+    return listRepetidos;
 }
 
 function ordenar(listNumeros = []) {
@@ -93,3 +93,20 @@ function ordenar(listNumeros = []) {
     return listNumeros;
 }
 
+// //Código original ---------------------------------
+// function controllerNumerosOriginal() {
+//     let listNumeros = listaNumerosOriginal();
+//     saidaResultado("Resultado: " + listNumeros);
+// }
+
+// function listaNumerosOriginal() {
+//     let listNumeros = "";
+//     for (let index = 1; index <= 100; index++) {
+//         listNumeros += index + "";
+//         if (index % 10 == 0) {
+//             listNumeros += "Multiplo";
+//         }
+//         listNumeros += ", ";
+//     }
+//     return listNumeros;
+// }
