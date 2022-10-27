@@ -30,8 +30,8 @@ function controllerNumeros() {
 
     saidaResultado(template);
 
-    document.querySelectorAll("p").forEach(paragrafo => {
-        paragrafo.addEventListener("click", event => {
+    document.querySelectorAll("p").forEach((paragrafo) => {
+        paragrafo.addEventListener("click", (event) => {
             console.log(event);
         })
     })
