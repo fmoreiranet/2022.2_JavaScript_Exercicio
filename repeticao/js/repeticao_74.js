@@ -31,7 +31,7 @@ function controllerNumeros() {
     saidaResultado(template);
 
     document.querySelectorAll("p").forEach(paragrafo => {
-        paragrafo.addEventListener("click", function (event) {
+        paragrafo.addEventListener("click", (event) => {
             console.log(event);
         })
     })
