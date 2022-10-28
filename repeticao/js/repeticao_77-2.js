@@ -1,6 +1,10 @@
 let idades = []
 
 !(function () {
+    capturaDados();
+})();
+
+function capturaDados() {
     document.querySelector("#idade")
         .addEventListener("keypress", (e) => {
             console.log(e); //Mosta o evento no console
@@ -16,7 +20,7 @@ let idades = []
                 e.preventDefault(); //cancela o enter de envio do form
             }
         })
-})();
+}
 
 function controllerIdade() {
     //let idade = document.querySelector("#idade");
