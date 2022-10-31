@@ -14,6 +14,7 @@ var aluno = {
     montarTabela(alunos);
 })()
 
+//View -------------------------------------------
 function controllerNotas() {
     aluno.nome = document.getElementById("nome").value;
     aluno.matricula = document.getElementById("matricula").value;
@@ -32,6 +33,15 @@ function controllerNotas() {
     montarTabela(alunos);
 }
 
+function mostrarResultado(resultado = false, media = 0) {
+    if (resultado) {
+        document.querySelector("#saidaResultado").innerHTML = "Aprovado -> media: " + media.toFixed(2);
+    } else {
+        document.querySelector("#saidaResultado").innerHTML = "Reprovado -> media: " + media.toFixed(2);
+    }
+}
+
+//Dados ------------------------------------------
 function calculoMedia(avaliacao1 = 0, avaliacao2 = 0, avaliacao3 = 0, avaliacao4 = 0) {
     return (avaliacao1 + avaliacao2 + avaliacao3 + avaliacao4) / 4
 }
@@ -41,14 +51,6 @@ function verificarSituacaoAluno(media = 0) {
         return true;
     }
     return false;
-}
-
-function mostrarResultado(resultado = false, media = 0) {
-    if (resultado) {
-        document.querySelector("#saidaResultado").innerHTML = "Aprovado -> media: " + media.toFixed(2);
-    } else {
-        document.querySelector("#saidaResultado").innerHTML = "Reprovado -> media: " + media.toFixed(2);
-    }
 }
 
 function addDadosAluno(obj = {}) {
